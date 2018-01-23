@@ -4,13 +4,13 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
+
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends AppController
 {
     /**
      * @inheritdoc
@@ -122,5 +122,11 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+    public function actionHello(){
+        return $this->render('hello');
+    }
+    public function actionHello2(){
+        return 'Hello Word2';
     }
 }
