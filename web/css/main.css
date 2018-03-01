@@ -706,6 +706,18 @@ h2.title:before{
 	margin-left: -110px;
 }
 
+ul.category-products{
+  padding-left: 10px;
+}
+
+.category-products ul{
+  padding-left: 10px;
+}
+
+.category-products li{
+  padding: 5px 0 5px 10px;
+}
+
 .category-products .panel {
 	background-color: #FFFFFF;
 	border: 0px;
@@ -721,7 +733,8 @@ h2.title:before{
   padding: 5px 20px;
 }
 
-.category-products .panel-default .panel-heading .panel-title a {
+.category-products .panel-default .panel-heading .panel-title a,
+.category-products li a{
   color: #696763;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;

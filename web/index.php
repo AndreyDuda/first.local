@@ -10,4 +10,6 @@ require __DIR__ . '/../function.php';
 
 $config = require __DIR__ . '/../config/web.php';
 
+require_once __DIR__ . '/../functions.php';
+
 (new yii\web\Application($config))->run();

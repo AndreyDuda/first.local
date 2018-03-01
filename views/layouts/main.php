@@ -68,7 +68,7 @@ ItAppAsset::register($this);
             <div class="row">
                 <div class="col-sm-4">
                     <div class="logo pull-left">
-                        <a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+                        <a href="index.html"><img src="/images/home/logo.png" alt="" /></a>
                     </div>
                     <div class="btn-group pull-right">
                         <div class="btn-group">
@@ -171,7 +171,7 @@ ItAppAsset::register($this);
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe1.png" alt="" />
+                                    <img src="/images/home/iframe1.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -186,7 +186,7 @@ ItAppAsset::register($this);
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe2.png" alt="" />
+                                    <img src="/images/home/iframe2.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -201,7 +201,7 @@ ItAppAsset::register($this);
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe3.png" alt="" />
+                                    <img src="/images/home/iframe3.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -216,7 +216,7 @@ ItAppAsset::register($this);
                         <div class="video-gallery text-center">
                             <a href="#">
                                 <div class="iframe-img">
-                                    <img src="images/home/iframe4.png" alt="" />
+                                    <img src="/images/home/iframe4.png" alt="" />
                                 </div>
                                 <div class="overlay-icon">
                                     <i class="fa fa-play-circle-o"></i>
@@ -229,7 +229,7 @@ ItAppAsset::register($this);
                 </div>
                 <div class="col-sm-3">
                     <div class="address">
-                        <img src="images/home/map.png" alt="" />
+                        <img src="/images/home/map.png" alt="" />
                         <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
                     </div>
                 </div>
