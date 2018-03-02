@@ -1,7 +1,6 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Store';
 ?>
 
 <section id="advertisement">
@@ -52,7 +51,7 @@ $this->title = 'Store';
 
             <div class="col-sm-9 padding-right">
                 <div class="features_items"><!--features_items-->
-                    <h2 class="title text-center">Features Items</h2>
+                    <h2 class="title text-center"><?=$category->name?></h2>
 
                     <?php if(!empty($products)): ?>
                         <?php $i=0; foreach ($products as $product): ?>
@@ -66,8 +65,8 @@ $this->title = 'Store';
 
                                     ])
                                     ?>
-                                    <h2>$ <?php $product->price?></h2>
-                                    <p><?php $product->name?></p>
+                                    <h2>$ <?= $product->price?></h2>
+                                    <p><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $product->id ])?>"><?= $product->name?></a></p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <?php if($product->new): ?>
@@ -98,17 +97,14 @@ $this->title = 'Store';
                                 <div class="clearfix"></div>
                             <?php endif ?>
                         <?php endforeach; ?>
+                        <div class="clearfix"></div>
+                    <?= \yii\widgets\LinkPager::widget([
+                            'pagination' => $pagination
+                        ])?>
                     <?php else: ?>
                     <h2>Здесь товаров пока нет ...</h2>
                     <?php endif; ?>
 
-                    <div class="clearfix"></div>
-                    <ul class="pagination">
-                        <li class="active"><a href="">1</a></li>
-                        <li><a href="">2</a></li>
-                        <li><a href="">3</a></li>
-                        <li><a href="">&raquo;</a></li>
-                    </ul>
                 </div><!--features_items-->
             </div>
         </div>

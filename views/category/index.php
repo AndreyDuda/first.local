@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 
-$this->title = 'Store';
+
 ?>
 
 <section id="slider"><!--slider-->
@@ -125,7 +125,7 @@ $this->title = 'Store';
                                     ])
                                     ?>
                                     <h2>$<?= $hit->price ?></h2>
-                                    <p><?= $hit->name ?></p>
+                                    <p><a href="<?= \yii\helpers\Url::to(['product/view', 'id' => $hit->id ])?>"><?= $hit->name ?></a></p>
                                     <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </div>
                                 <?php if($hit->new): ?>
