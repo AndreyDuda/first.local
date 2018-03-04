@@ -17,13 +17,16 @@ class ProductController extends AppController
 {
     public function actionView($id)
     {
-        $id = Yii::$app->request->get('id');
+        $id      = Yii::$app->request->get('id');
         $product = Product::findOne($id);
+        $hits    = Product::find()->where( ['hit' => '1'] )->limit(6)->all();
 
         $data = [
-            'product' => $product
+            'product' => $product,
+            'hits'    => $hits
         ];
 
+        $this->setMeta('STORE | ' . $product->name, $product->keywords, $product->description);
         return $this->render('view', $data);
     }
 
