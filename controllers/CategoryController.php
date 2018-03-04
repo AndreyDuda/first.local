@@ -31,9 +31,9 @@ class CategoryController extends AppController
 
     public function actionView($id)
     {
-        $id         = Yii::$app->request->get('id');
+        $id         = trim( Yii::$app->request->get('id') );
         $category   = Category::findOne($id);
-        if( !empty($category) ){
+        if( empty($category) ){
             throw new HttpException(404, 'Нет такой категории');
         }
         $query      = Product::find()->where(['category_id' => $id]);
@@ -53,6 +53,27 @@ class CategoryController extends AppController
         $this->setMeta('STORE | ' . $category->name, $category->keywords, $category->description);
         return $this->render('view', $data);
 
+    }
+
+    public function actionSearch()
+    {
+        $q          = Yii::$app->request->get('q');
+        $query      = Product::find()->where(['like', 'name', $q]);
+        $pagination = new Pagination([
+            'pageSize'       => 3,
+            'totalCount'     => $query->count(),
+            'pageSizeParam'  => FALSE,
+            'forcePageParam' => FALSE
+        ]);
+        $products   = $query->offset($pagination->offset)->limit($pagination->limit)->all();
+        $data       = [
+            'q'              => $q,
+            'products'       => $products,
+            'pagination'     => $pagination
+        ];
+
+        $this->setMeta('STORE | ' . $q);
+        return $this->render('search', $data);
     }
 
 

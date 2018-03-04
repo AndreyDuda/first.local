@@ -19,7 +19,7 @@ class ProductController extends AppController
     {
         $id      = Yii::$app->request->get('id');
         $product = Product::findOne($id);
-        if( !empty($product) ){
+        if( empty($product) ){
             throw new HttpException(404, 'Такого товара нет');
         }
         $hits    = Product::find()->where( ['hit' => '1'] )->limit(6)->all();
