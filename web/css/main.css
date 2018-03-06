@@ -1077,6 +1077,10 @@ h2.title {
   background: #ccccc6;
 }
 
+.del-item{
+  cursor: pointer;
+}
+
 .recommended_items  h2 {
 }
 
