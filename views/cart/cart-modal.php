@@ -7,7 +7,7 @@
                     <th>Наименнование</th>
                     <th>Кол-во</th>
                     <th>Цена</th>
-                    <th><span class="qlyphicon qlyphicon-remove" aria-hidden="true"></span></th>
+                    <th><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -17,7 +17,7 @@
                         <td><?= $cart['name'] ?></td>
                         <td><?= $cart['qty'] ?></td>
                         <td><?= $cart['price'] ?></td>
-                        <td><span class="qlyphicon qlyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
+                        <td><span class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></td>
                     </tr>
                 <?php endforeach; ?>
                     <tr>

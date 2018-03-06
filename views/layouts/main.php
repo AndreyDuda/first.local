@@ -10,6 +10,7 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\ItAppAsset;
+use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 ItAppAsset::register($this);
@@ -315,7 +316,18 @@ ItAppAsset::register($this);
     </div>
 
 </footer><!--/Footer-->
+<?php
+    Modal::begin([
+        'id'     => 'cart',
+        'size'   => 'modal-lg',
+        'header' => '<h2>Корзина</h2>',
+        'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить</button>
+                     <button type="button" class="btn btn-success">Оформить заказ</button>
+                     <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>'
+    ]);
 
+    Modal::end();
+?>
 
 
 <?php $this->endBody() ?>
