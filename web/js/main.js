@@ -18,7 +18,7 @@
 			if(!res){
 				alert('Ошибка');
 			}else{
-                alert(res);
+                console.log(res);
 			}
 
         },

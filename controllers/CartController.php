@@ -17,8 +17,9 @@ class CartController extends AppController
 
     public function actionAdd()
     {
-        $id      = Yii::$app->request->get('id');
-        $product = Product::findOne($id);
+        $this->layout = FALSE;
+        $id           = Yii::$app->request->get('id');
+        $product      = Product::findOne($id);
 
         if( empty($product) ){
             return FALSE;
@@ -28,6 +29,11 @@ class CartController extends AppController
 
         $cart    = new Cart();
         $cart->addToCart($product);
+
+        $data    = [
+            'session' => $session
+        ];
+        return $this->render('cart-modal', $data);
 
     }
 }
