@@ -11,6 +11,8 @@ namespace app\controllers;
 use app\models\Product;
 use app\models\Cart;
 use Yii;
+use app\models\Order;
+use app\models\OrderItems;
 
 class CartController extends AppController
 {
@@ -19,6 +21,8 @@ class CartController extends AppController
     {
         $this->layout = FALSE;
         $id           = Yii::$app->request->get('id');
+        $qty          = (int)Yii::$app->request->get('qty');
+        $qty          = ( !$qty )? 1 : $qty;
         $product      = Product::findOne($id);
 
         if( empty($product) ){
@@ -28,7 +32,7 @@ class CartController extends AppController
         $session->open();
 
         $cart    = new Cart();
-        $cart->addToCart($product);
+        $cart->addToCart($product, $qty);
 
         $data    = [
             'session' => $session
@@ -77,5 +81,20 @@ class CartController extends AppController
             'session' => $session
         ];
         return $this->render('cart-modal', $data);
+    }
+
+    public function actionView()
+    {
+        $session = Yii::$app->session;
+        $session->open();
+        $order   = new Order();
+
+        $data    = [
+            'session' => $session,
+            'order'   => $order
+        ];
+
+        $this->setMeta('Корзина');
+        return $this->render('view', $data);
     }
 }
