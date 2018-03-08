@@ -4,6 +4,9 @@ namespace app\models;
 
 use \yii\db\ActiveRecord;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
+
 
 /**
  * This is the model class for table "order".
@@ -59,6 +62,21 @@ class Order extends ActiveRecord
             'email' => 'E-mail',
             'phone' => 'Телефон',
             'address' => 'Адресс',
+        ];
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class'     => TimestampBehavior::className(),
+                'attribute' => [
+                    ActiveRecord::EVENT_AFTER_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_AFTER_UPDATE => ['updated_at'],
+                ],
+
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
 }

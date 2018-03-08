@@ -94,7 +94,39 @@ class CartController extends AppController
             'order'   => $order
         ];
 
+        if( $order->load(Yii::$app->request->post()) ){
+            $order->qty = $session['cart.qty'];
+            $order->sum = $session['cart.sum'];
+            if( $order->save() ){
+                $this->saveOrderItems($session['cart'], $order->id);
+                Yii::$app->session->setFlash('success', 'Заказ принять и будет обработан');
+                $session->remove('cart');
+                $session->remove('cart.qty');
+                $session->remove('cart.sum');
+
+                return $this->refresh();
+            }else{
+                Yii::$app->session->setFlash('error', 'Заказ не может быть обработан');
+            }
+
+        }
+
         $this->setMeta('Корзина');
         return $this->render('view', $data);
+    }
+
+    protected function seveOrderItems($items, $order_id)
+    {
+        foreach ($items as $id => $item){
+            $order_items             = new OrderItems();
+            $order_items->order_id   = $order_id;
+            $order_items->product_id = $id;
+            $order_items->name       = $item['name'];
+            $order_items->price      = $item['price'];
+            $order_items->qty_item   = $item['qty'];
+            $order_items->sum_item   = $item['qty'] * $item['price'];
+
+            $order_items->save();
+        }
     }
 }
