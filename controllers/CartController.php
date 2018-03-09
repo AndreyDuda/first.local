@@ -98,11 +98,17 @@ class CartController extends AppController
             $order->qty = $session['cart.qty'];
             $order->sum = $session['cart.sum'];
             if( $order->save() ){
-                $this->saveOrderItems($session['cart'], $order->id);
+                $this->saveOrderItems( $session['cart'], $order->id );
                 Yii::$app->session->setFlash('success', 'Заказ принять и будет обработан');
                 $session->remove('cart');
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');
+
+                Yii::$app->mailer->compose('order', ['session' => $session])
+                                 ->setFrom('credonull@gmail.com')
+                                 ->setTo($order->email)
+                                 ->setSubject('Заказ')
+                                 ->send();
 
                 return $this->refresh();
             }else{
@@ -115,7 +121,7 @@ class CartController extends AppController
         return $this->render('view', $data);
     }
 
-    protected function seveOrderItems($items, $order_id)
+    protected function saveOrderItems($items, $order_id)
     {
         foreach ($items as $id => $item){
             $order_items             = new OrderItems();

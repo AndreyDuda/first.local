@@ -35,6 +35,14 @@ $config = [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+            /*'transport'        => [
+                'class'      => 'swift_SmtpTransport',
+                'host'       => 'smtp.google.com',
+                'username'   => 'credonull',
+                'password'   => '**********',
+                'post'       => '465',
+                'encryption' => 'ssl',
+            ],*/
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
